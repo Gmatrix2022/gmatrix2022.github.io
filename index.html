@@ -362,7 +362,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-top: 48px;
+    margin-top: 14px;
+  }
+
+  .group-title {
+    margin: 48px 0 0;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   .course {
@@ -699,6 +707,7 @@
       <div class="container">
         <p class="kicker">Teaching</p>
         <h2 class="section-title">教学课程</h2>
+        <h3 class="group-title">本科课程</h3>
         <div class="teaching-grid">
           <div class="course" data-component="CourseItem" data-od-id="course-gis-software">
             <h3>GIS 软件应用</h3>
@@ -712,25 +721,20 @@
             <h3>Web GIS 技术原理</h3>
             <span>讲解网络地图服务、空间数据发布与前端可视化技术路线。</span>
           </div>
-          <div class="course" data-component="CourseItem" data-od-id="course-python">
-            <h3>Python 数据处理与分析</h3>
-            <span>以 Python 为工具完成数据清洗、统计分析与空间数据建模。</span>
-          </div>
-          <div class="course" data-component="CourseItem" data-od-id="course-3s">
-            <h3>3S 综合实习</h3>
-            <span>整合遥感、地理信息系统与全球定位系统的野外综合实践。</span>
-          </div>
-          <div class="course" data-component="CourseItem" data-od-id="course-database">
-            <h3>数据库原理与实践</h3>
-            <span>覆盖关系数据库设计基础及 SQL Server 教学实验内容。</span>
+        </div>
+        <h3 class="group-title">研究生课程</h3>
+        <div class="teaching-grid">
+          <div class="course" data-component="CourseItem" data-od-id="course-gis-design">
+            <h3>GIS 设计与开发</h3>
+            <span>涉及软件设计方法、基于编程体的开发方法、云计算与地理智能等主题。</span>
           </div>
         </div>
         <div class="course-tags">
           <span class="chip">空间分析</span>
           <span class="chip">WebGIS</span>
-          <span class="chip">Python</span>
-          <span class="chip">时空数据</span>
-          <span class="chip">机器学习</span>
+          <span class="chip">软件设计</span>
+          <span class="chip">云计算</span>
+          <span class="chip">地理智能</span>
         </div>
       </div>
     </section>
