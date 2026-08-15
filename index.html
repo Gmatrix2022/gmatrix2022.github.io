@@ -434,6 +434,36 @@
   .achieve-item p { margin-top: 6px; font-size: 0.94rem; line-height: 1.65; }
   .achieve-item p strong { font-weight: 550; }
 
+  /* Nous Mind — standalone card */
+  .nous-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 48px;
+    background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--accent-soft) 55%, var(--surface)));
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) * 1.4);
+    text-align: center;
+  }
+
+  .nous-logo {
+    width: min(720px, 100%);
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--seed-fg) 12%, transparent);
+  }
+
+  .nous-desc {
+    margin: 14px auto 0;
+    max-width: 56ch;
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .nous-card .btn { margin-top: 6px; }
+
   /* Contact + CTA */
   .contact-grid {
     display: grid;
@@ -612,6 +642,7 @@
         <a href="#research">Research</a>
         <a href="#teaching">Teaching</a>
         <a href="#achievements">Work</a>
+        <a href="#nous">Nous Mind</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -786,6 +817,19 @@
               <span class="year-font">2011</span>
               <p><strong>Yang K.</strong>, Xia J., Meng R. · Design of a Pollution Source Census Data Analysis Platform Based on ArcGIS and Flex · Yunnan Geographic Environment Research</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section nous" id="nous" data-component="NousMind" data-od-id="nous">
+      <div class="container">
+        <div class="nous-card">
+          <img class="nous-logo" src="logo.svg" alt="Nous Mind logo — the world, mind made manifest" width="800" height="400" loading="lazy">
+          <div class="nous-body">
+            <h2 class="section-title">Nous Mind</h2>
+            <p class="nous-desc">A unified vision where humans, machines, and the world form one whole — mind expressed through algorithms and Hilbert-space fields.</p>
+            <a class="btn btn-primary" href="https://nouslab.vip" target="_blank" rel="noopener">Visit nouslab.vip</a>
           </div>
         </div>
       </div>

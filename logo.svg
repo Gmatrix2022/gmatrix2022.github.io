@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-label="Nous Mind logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#F6F0FF"/>
+      <stop offset="1" stop-color="#EADFFB"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#C9B6FF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#C9B6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stream" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7FD8FF"/>
+      <stop offset="0.5" stop-color="#A98BFF"/>
+      <stop offset="1" stop-color="#B96AE6"/>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#B7A6E8" opacity="0.35"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="400" rx="28" fill="url(#bg)"/>
+  <rect width="800" height="400" rx="28" fill="url(#dots)"/>
+  <rect x="0.75" y="0.75" width="798.5" height="398.5" rx="27.25" fill="none" stroke="#E2D5FA" stroke-width="1.5"/>
+
+  <circle cx="150" cy="190" r="150" fill="url(#glow)"/>
+
+  <!-- Hilbert-space field: two tilted orbits as a unified field of mind -->
+  <g fill="none" stroke="#A78BFA" stroke-width="1.8" opacity="0.6">
+    <ellipse cx="150" cy="190" rx="118" ry="40" transform="rotate(-24 150 190)"/>
+    <ellipse cx="150" cy="190" rx="118" ry="40" transform="rotate(24 150 190)"/>
+  </g>
+  <g fill="#B088E6">
+    <g transform="rotate(-24 150 190)">
+      <circle cx="268" cy="190" r="5"/>
+      <circle cx="150" cy="150" r="4"/>
+      <circle cx="150" cy="230" r="4"/>
+    </g>
+    <g transform="rotate(24 150 190)">
+      <circle cx="32" cy="190" r="5"/>
+      <circle cx="150" cy="150" r="4"/>
+      <circle cx="150" cy="230" r="4"/>
+    </g>
+  </g>
+
+  <!-- Ψ — the mind symbol -->
+  <g fill="none" stroke="#5B3E96" stroke-width="8" stroke-linecap="round">
+    <path d="M150 252 V170"/>
+    <path d="M105 118 C105 162 129 170 150 170 C171 170 195 162 195 118"/>
+    <path d="M105 118 H90"/>
+    <path d="M195 118 H210"/>
+  </g>
+
+  <!-- Mind made manifest: the flowing stream of nodes and algorithms -->
+  <path d="M60 330 C140 310 180 310 260 330 S420 350 500 328 S680 306 750 320"
+        fill="none" stroke="url(#stream)" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <g fill="#A98BFF">
+    <circle cx="120" cy="318" r="4.5"/>
+    <circle cx="260" cy="330" r="5.5"/>
+    <circle cx="420" cy="344" r="4.5"/>
+    <circle cx="500" cy="328" r="6"/>
+    <circle cx="660" cy="312" r="5"/>
+    <circle cx="750" cy="320" r="4.5"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="336" y="206" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="600" fill="#4A2E7E" letter-spacing="-3">Nous</text>
+  <text x="340" y="252" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="19" letter-spacing="7" fill="#8B6FC0">NOUS · KOSMOS · MIND</text>
+  <text x="340" y="282" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="16" letter-spacing="1" fill="#9C86C6">the world — mind made manifest</text>
+</svg>
