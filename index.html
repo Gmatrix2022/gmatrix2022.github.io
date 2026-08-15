@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>杨克诚 · 个人介绍</title>
+<style>
+  :root {
+    /* Seed tokens — patched by appearance presets */
+    --seed-bg: #F7F1EA;
+    --seed-fg: #2E2A25;
+    --seed-primary: #A14E2B;
+    --seed-accent: #B96A48;
+    --seed-surface: #FFFCF8;
+    --seed-radius: 16px;
+
+    /* Semantic tokens derived from seeds */
+    --bg: var(--seed-bg);
+    --surface: var(--seed-surface);
+    --fg: var(--seed-fg);
+    --muted: #6E655C;
+    --muted: color-mix(in srgb, var(--seed-fg) 62%, var(--seed-bg));
+    --border: #E4DACC;
+    --border: color-mix(in srgb, var(--seed-fg) 14%, var(--seed-bg));
+    --accent: var(--seed-primary);
+    --accent-soft: #F0E3DA;
+    --accent-soft: color-mix(in srgb, var(--seed-accent) 16%, var(--seed-bg));
+    --on-accent: #FEF9F4;
+    --radius: var(--seed-radius);
+    --radius-sm: calc(var(--seed-radius) * 0.6);
+
+    --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    --font-body: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+
+    --maxw: 1120px;
+    --section-gap: 112px;
+    --card-gap: 20px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  .container {
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .section { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+
+  .kicker {
+    margin: 0 0 16px;
+    font-size: 0.75rem;
+    font-weight: 550;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .kicker::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 2px;
+    margin-top: 12px;
+    background: var(--border);
+  }
+
+  h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 { font-family: var(--font-body); font-weight: 550; margin: 0; }
+
+  p { margin: 0; }
+  .lead { max-width: 62ch; }
+
+  .section-title {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    gap: 24px;
+  }
+
+  .brand {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.15;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .brand small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+
+  .nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .nav-toggle-label span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    margin: 0 auto;
+    background: var(--fg);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-nav { display: flex; align-items: center; gap: 28px; }
+
+  .site-nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    border-bottom: 1.5px solid transparent;
+    padding-bottom: 4px;
+  }
+
+  .site-nav a:hover { border-bottom-color: var(--fg); }
+
+  /* Hero */
+  .hero {
+    padding-top: 104px;
+    padding-bottom: 104px;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    align-items: center;
+    gap: 56px;
+  }
+
+  .hero-kicker { color: var(--accent); margin-bottom: 24px; }
+  .hero-kicker::after { background: var(--accent); opacity: 0.5; }
+
+  .hero h1 {
+    font-size: clamp(3rem, 9vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-en {
+    margin-top: 14px;
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .hero-role {
+    margin-top: 28px;
+    font-size: 1.05rem;
+    color: var(--fg);
+  }
+
+  .hero-tagline {
+    margin-top: 16px;
+    max-width: 30ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 550;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 32%, transparent); }
+
+  .btn-secondary { background: var(--surface); color: var(--fg); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--muted); }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin-top: 40px;
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+
+  .hero-meta strong {
+    font-weight: 550;
+    color: var(--fg);
+    margin-right: 6px;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .hero-photo {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: 0 24px 60px color-mix(in srgb, var(--seed-fg) 12%, transparent);
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* About — narrower, breathing section */
+  .about { padding-top: 32px; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-grid .lead {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--fg);
+  }
+
+  .about-grid p:not(.lead) {
+    color: var(--muted);
+    margin-top: 16px;
+  }
+
+  /* Education — tight timeline */
+  .edu-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 48px;
+  }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 28px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-item:first-child { border-top: 1px solid var(--border); }
+
+  .edu-year { font-size: 1rem; font-weight: 550; color: var(--accent); letter-spacing: 0.02em; }
+  .edu-body h3 { font-size: 1.1rem; }
+  .edu-body p { margin-top: 6px; color: var(--muted); font-size: 0.95rem; }
+
+  /* Research — three tiles */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+    margin-top: 48px;
+  }
+
+  .research-card {
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .research-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px color-mix(in srgb, var(--seed-fg) 10%, transparent);
+  }
+
+  .research-card .icon {
+    width: 34px;
+    height: 34px;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .research-card h3 { font-size: 1.13rem; letter-spacing: -0.01em; }
+  .research-card p { margin-top: 10px; font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
+
+  /* Teaching — chips + two-col detail */
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .course {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .course h3 { font-size: 1rem; }
+  .course span { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  .course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .chip {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    background: var(--accent-soft);
+    color: var(--fg);
+    border: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border));
+  }
+
+  /* Achievements */
+  .achieve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .achieve-col h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .achieve-item {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .achieve-item .year-font {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    font-weight: 550;
+  }
+
+  .achieve-item p { margin-top: 6px; font-size: 0.94rem; line-height: 1.65; }
+  .achieve-item p strong { font-weight: 550; }
+
+  /* Contact + CTA */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+    margin-top: 48px;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .contact-card .icon { width: 26px; height: 26px; color: var(--accent); }
+
+  .contact-card h3 { font-size: 1rem; }
+  .contact-card a {
+    font-size: 0.92rem;
+    color: var(--muted);
+    word-break: break-all;
+    border-bottom: 1px solid transparent;
+    width: fit-content;
+  }
+  .contact-card a:hover { color: var(--fg); border-bottom-color: var(--fg); }
+
+  .cta-band {
+    margin-top: 80px;
+    padding: 56px;
+    border-radius: calc(var(--radius) * 1.4);
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .cta-band h2 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .cta-band p { margin-top: 14px; color: color-mix(in srgb, var(--on-accent) 78%, transparent); max-width: 44ch; }
+
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+  .btn-onaccent { background: var(--on-accent); color: var(--accent); border: 1px solid transparent; }
+  .btn-onaccent:hover { box-shadow: 0 10px 26px color-mix(in srgb, var(--seed-fg) 20%, transparent); }
+
+  .btn-ghost { background: transparent; color: var(--on-accent); border: 1px solid color-mix(in srgb, var(--on-accent) 45%, transparent); }
+  .btn-ghost:hover { border-color: var(--on-accent); }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0 40px;
+  }
+
+  .footer-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a:hover { color: var(--fg); }
+
+  .icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .container { padding-left: 24px; padding-right: 24px; }
+    :root { --section-gap: 84px; }
+    .hero { padding-top: 76px; padding-bottom: 76px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .hero-photo { max-width: 640px; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    .research-grid { grid-template-columns: 1fr; }
+    .teaching-grid { grid-template-columns: 1fr; }
+    .achieve-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .cta-band { padding: 40px 28px; }
+  }
+
+  @media (max-width: 719px) {
+    :root { --section-gap: 68px; }
+    .nav-toggle-label { display: flex; }
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      gap: 0;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px 24px 22px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-toggle:checked ~ .site-nav { display: flex; }
+    .site-nav a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .edu-item { grid-template-columns: 1fr; gap: 8px; }
+    .hero-actions .btn { flex: 1 1 auto; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .research-card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="icon-grid" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="7" rx="1.6"/>
+      <rect x="14" y="3" width="7" height="7" rx="1.6"/>
+      <rect x="3" y="14" width="7" height="7" rx="1.6"/>
+      <rect x="14" y="14" width="7" height="7" rx="1.6"/>
+      <circle cx="12" cy="6.5" r="1.2"/>
+      <circle cx="6.5" cy="17.5" r="1.2"/>
+      <circle cx="17.5" cy="12" r="1.2"/>
+    </symbol>
+    <symbol id="icon-nodes" viewBox="0 0 24 24">
+      <circle cx="6" cy="6" r="2.2"/>
+      <circle cx="18" cy="8" r="2.2"/>
+      <circle cx="12" cy="18" r="2.2"/>
+      <path d="M7.8 7.2l8.4-.4M16.6 9.9L13 16M8.2 6.9l2.4 9.3"/>
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M3 12h18"/>
+      <path d="M12 3c3 3.4 3 15 0 18"/>
+      <path d="M12 3c-3 3.4-3 15 0 18"/>
+    </symbol>
+    <symbol id="icon-branch" viewBox="0 0 24 24">
+      <circle cx="6" cy="6" r="2.4"/>
+      <circle cx="6" cy="18" r="2.4"/>
+      <circle cx="18" cy="8" r="2.4"/>
+      <path d="M6 8.4v7.2M18 10.4c-2.2-.8-5.4.5-6 1.6"/>
+      <path d="M12 12c-1.6-1.4-3.2-1.9-6-1.6"/>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2"/>
+      <path d="M4 7l8 6 8-6"/>
+    </symbol>
+    <symbol id="icon-link" viewBox="0 0 24 24">
+      <path d="M10 14a5 5 0 0 0 7.1 0l2.3-2.3a5 5 0 0 0-7.1-7.1l-1.1 1.1"/>
+      <path d="M14 10a5 5 0 0 0-7.1 0l-2.3 2.3a5 5 0 0 0 7.1 7.1l1.1-1.1"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header" data-component="Header" data-od-id="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top">杨克诚 <small>Kecheng Yang</small></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="打开导航菜单">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="site-nav" aria-label="页面导航" data-component="Navigation" data-od-id="navigation">
+        <a href="#about">关于</a>
+        <a href="#research">研究</a>
+        <a href="#teaching">教学</a>
+        <a href="#achievements">成果</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top" data-component="Hero" data-od-id="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker hero-kicker">云南大学 · 地球科学学院 · 地理信息科学系</p>
+          <h1>杨克诚</h1>
+          <p class="hero-en">Kecheng Yang</p>
+          <p class="hero-role">副教授 · 地理信息科学教学与科研</p>
+          <p class="hero-tagline">把地理时空数据转化为可理解、可计算、可交互的知识与工具。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/Gmatrix2022" target="_blank" rel="noopener">访问 GitHub</a>
+            <a class="btn btn-secondary" href="mailto:kchyang@ynu.edu.cn">邮件联系</a>
+          </div>
+          <div class="hero-meta">
+            <span><strong>10 余篇</strong>论文</span>
+            <span><strong>2 部</strong>教材</span>
+            <span><strong>5 项</strong>省部级教学与科技奖励</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <figure class="hero-photo">
+            <img src="uploads/image_1786804187149_d360us9.png" alt="杨克诚讲师照片" width="1433" height="814" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about" data-component="About" data-od-id="about">
+      <div class="container about-grid">
+        <div>
+          <p class="kicker">About</p>
+          <h2 class="section-title">关于我</h2>
+        </div>
+        <div>
+          <p class="lead">杨克诚，汉族，副教授，1974 年 4 月生，云南大学地球科学学院地理信息科学系。</p>
+          <p>1996 年毕业于云南大学地球科学系，获理学学士学位；2009 年获云南大学自然地理学硕士学位；2011 年 10 月获副教授职称。自 2002 年以来，长期承担地理信息系统本科专业核心课程的教学与相关科研工作，主要研究领域为地理时空数据挖掘、基于机器学习的地理空间数据处理方法，以及 Web GIS 平台技术。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section education" id="education" data-component="Education" data-od-id="education">
+      <div class="container">
+        <p class="kicker">Education</p>
+        <h2 class="section-title">教育经历</h2>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-year">2009</div>
+            <div class="edu-body">
+              <h3>自然地理学 · 理学硕士</h3>
+              <p>云南大学</p>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">1996</div>
+            <div class="edu-body">
+              <h3>地球科学 · 理学学士</h3>
+              <p>云南大学地球科学系</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research" id="research" data-component="Research" data-od-id="research">
+      <div class="container">
+        <p class="kicker">Research</p>
+        <h2 class="section-title">研究方向</h2>
+        <div class="research-grid">
+          <article class="research-card" data-component="ResearchCard" data-od-id="research-spatiotemporal">
+            <svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>
+            <h3>地理时空数据挖掘</h3>
+            <p>从多源地理数据中提取时空格局、异常与趋势，为资源环境研究与决策提供可量化依据。</p>
+          </article>
+          <article class="research-card" data-component="ResearchCard" data-od-id="research-ml">
+            <svg class="icon" aria-hidden="true"><use href="#icon-nodes"/></svg>
+            <h3>机器学习地理空间数据处理</h3>
+            <p>将机器学习方法引入地理空间数据的建模与处理流程，提升分析效率与结果精度。</p>
+          </article>
+          <article class="research-card" data-component="ResearchCard" data-od-id="research-webgis">
+            <svg class="icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+            <h3>Web GIS 平台技术</h3>
+            <p>面向实际需求构建 WebGIS 应用与平台，让地理信息在浏览器中可见、可查询、可交互。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section teaching" id="teaching" data-component="Teaching" data-od-id="teaching">
+      <div class="container">
+        <p class="kicker">Teaching</p>
+        <h2 class="section-title">教学课程</h2>
+        <div class="teaching-grid">
+          <div class="course" data-component="CourseItem" data-od-id="course-gis-software">
+            <h3>GIS 软件应用</h3>
+            <span>围绕主流 GIS 平台，训练空间数据组织、制图与分析的基本功。</span>
+          </div>
+          <div class="course" data-component="CourseItem" data-od-id="course-gis-dev">
+            <h3>GIS 应用软件开发</h3>
+            <span>面向地理信息业务需求，讲授二次开发方法与组件化实现。</span>
+          </div>
+          <div class="course" data-component="CourseItem" data-od-id="course-webgis">
+            <h3>Web GIS 技术原理</h3>
+            <span>讲解网络地图服务、空间数据发布与前端可视化技术路线。</span>
+          </div>
+          <div class="course" data-component="CourseItem" data-od-id="course-python">
+            <h3>Python 数据处理与分析</h3>
+            <span>以 Python 为工具完成数据清洗、统计分析与空间数据建模。</span>
+          </div>
+          <div class="course" data-component="CourseItem" data-od-id="course-3s">
+            <h3>3S 综合实习</h3>
+            <span>整合遥感、地理信息系统与全球定位系统的野外综合实践。</span>
+          </div>
+          <div class="course" data-component="CourseItem" data-od-id="course-database">
+            <h3>数据库原理与实践</h3>
+            <span>覆盖关系数据库设计基础及 SQL Server 教学实验内容。</span>
+          </div>
+        </div>
+        <div class="course-tags">
+          <span class="chip">空间分析</span>
+          <span class="chip">WebGIS</span>
+          <span class="chip">Python</span>
+          <span class="chip">时空数据</span>
+          <span class="chip">机器学习</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section achievements" id="achievements" data-component="Achievements" data-od-id="achievements">
+      <div class="container">
+        <p class="kicker">Selected Work</p>
+        <h2 class="section-title">代表成果与获奖</h2>
+        <div class="achieve-grid">
+          <div class="achieve-col">
+            <h3>教学与科技奖励</h3>
+            <div class="achieve-item">
+              <span class="year-font">2018</span>
+              <p><strong>云南省高等教育教学成果奖一等奖</strong> · GIS 专业创新人才培养模式探索与实践</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2017</span>
+              <p><strong>全国高校 GIS 教学成果奖二等奖</strong> · 区域性大学 GIS 实践教学体系的建设与创新</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2020</span>
+              <p><strong>云南省普通高等学校优秀教材</strong> · 《数据库原理实验指导书 — SQL Server 2016》</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2011</span>
+              <p><strong>云南省优秀科技论文奖一等奖</strong> · Time Efficiency Optimization Technique of Mass Data Rendering by Mobile GIS</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2004</span>
+              <p><strong>云南省科技进步二等奖</strong> · 澜沧江—湄公河区域综合开发一协调的信息管理与决策支持系统建设</p>
+            </div>
+          </div>
+          <div class="achieve-col">
+            <h3>代表性论文与专著</h3>
+            <div class="achieve-item">
+              <span class="year-font">2020</span>
+              <p>Xia J., Li J., Dong P., <strong>Yang K.*</strong> · An ArcGIS add-in for spatiotemporal data mining in climate data · Earth Science Informatics</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2017</span>
+              <p>夏既胜、李进讷、<strong>杨克诚</strong> · 《数据库原理实验指导 — SQL Server 2016》 · 科学出版社</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2009</span>
+              <p><strong>杨克诚</strong> 编著 · 《GIS 软件实验指导书 — 基于 ArcGIS Desktop》 · 云南大学出版社</p>
+            </div>
+            <div class="achieve-item">
+              <span class="year-font">2011</span>
+              <p><strong>杨克诚</strong>、夏既胜、孟若琳 · 基于 ArcGIS 和 Flex 技术的污染源普查数据分析平台设计 · 云南地理环境研究</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" data-component="Contact" data-od-id="contact">
+      <div class="container">
+        <p class="kicker">Contact</p>
+        <h2 class="section-title">保持联系</h2>
+        <div class="contact-grid">
+          <div class="contact-card" data-component="ContactCard" data-od-id="contact-email">
+            <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
+            <h3>邮箱</h3>
+            <a href="mailto:kchyang@ynu.edu.cn">kchyang@ynu.edu.cn</a>
+          </div>
+          <div class="contact-card" data-component="ContactCard" data-od-id="contact-github">
+            <svg class="icon" aria-hidden="true"><use href="#icon-branch"/></svg>
+            <h3>GitHub</h3>
+            <a href="https://github.com/Gmatrix2022" target="_blank" rel="noopener">github.com/Gmatrix2022</a>
+          </div>
+          <div class="contact-card" data-component="ContactCard" data-od-id="contact-homepage">
+            <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
+            <h3>个人主页</h3>
+            <a href="https://gmatrix2022.github.io" target="_blank" rel="noopener">gmatrix2022.github.io</a>
+          </div>
+        </div>
+
+        <div class="cta-band" data-component="CallToAction" data-od-id="call-to-action">
+          <h2>对地理时空数据与 WebGIS 感兴趣？</h2>
+          <p>欢迎交流研究方向、教学课程或项目合作。代码与更多实践都放在 GitHub，也可以直接通过邮箱联系。</p>
+          <div class="cta-actions">
+            <a class="btn btn-onaccent" href="https://github.com/Gmatrix2022" target="_blank" rel="noopener">访问 GitHub</a>
+            <a class="btn btn-ghost" href="mailto:kchyang@ynu.edu.cn">邮件联系</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-component="Footer" data-od-id="footer">
+    <div class="container footer-wrap">
+      <span>© 2026 杨克诚 · 云南大学地球科学学院</span>
+      <nav class="footer-links" aria-label="页脚链接">
+        <a href="https://github.com/Gmatrix2022" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://gmatrix2022.github.io" target="_blank" rel="noopener">个人主页</a>
+        <a href="mailto:kchyang@ynu.edu.cn">邮箱</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
